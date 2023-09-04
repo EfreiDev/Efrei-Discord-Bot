@@ -1,7 +1,10 @@
 package fr.efrei.bot;
 
+import fr.efrei.bot.command.CommandManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.interactions.commands.Command;
+import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.apache.commons.cli.*;
@@ -48,6 +51,12 @@ public class Main {
         } catch (InterruptedException exception) {
             exception.printStackTrace();
         }
+        Main.jda.addEventListener(new Listeners());
+        Setup.commands();
+    }
+
+    public static JDA getJda() {
+        return Main.jda;
     }
 
 }
